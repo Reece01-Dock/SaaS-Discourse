@@ -1,0 +1,9 @@
+// Minimal styling hook for admin UI
+.saas-licensing {
+  .license-card {
+    border: 1px solid var(--primary-low);
+    padding: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 6px;
+  }
+}

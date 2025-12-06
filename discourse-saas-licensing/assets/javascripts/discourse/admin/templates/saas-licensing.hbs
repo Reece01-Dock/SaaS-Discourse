@@ -1,0 +1,58 @@
+<div class="saas-licensing">
+  <h2>{{i18n "saas_licensing.packages"}}</h2>
+  <div class="license-card">
+    <label>Name {{input value=this.newPackage.name}}</label>
+    <label>Price (cents) {{input type="number" value=this.newPackage.price}}</label>
+    <label>Duration days {{input type="number" value=this.newPackage.duration_days}}</label>
+    <label>Seats {{input type="number" value=this.newPackage.seats}}</label>
+    <label>Group ID {{input type="number" value=this.newPackage.group_id}}</label>
+    <label>Org license {{input type="checkbox" checked=this.newPackage.is_org_license}}</label>
+    <DButton @action={{this.createPackage}} @label={{i18n "saas_licensing.add_package"}} />
+  </div>
+
+  {{#each this.model.packages as |pkg|}}
+    <div class="license-card">
+      <label>Name {{input value=pkg.name}}</label>
+      <label>Price {{input type="number" value=pkg.price}}</label>
+      <label>Duration {{input type="number" value=pkg.duration_days}}</label>
+      <label>Seats {{input type="number" value=pkg.seats}}</label>
+      <label>Group ID {{input type="number" value=pkg.group_id}}</label>
+      <label>Org license {{input type="checkbox" checked=pkg.is_org_license}}</label>
+      <DButton @action={{fn this.updatePackage pkg}} @label={{i18n "saas_licensing.save"}} />
+      <DButton
+        @action={{fn this.deletePackage pkg}}
+        @label={{i18n "saas_licensing.delete"}}
+        @class="btn-danger"
+      />
+    </div>
+  {{/each}}
+
+  <h2>{{i18n "saas_licensing.organisations"}}</h2>
+  {{#each this.model.organisations as |org|}}
+    <div class="license-card">
+      <strong>{{org.name}}</strong>
+      <div>{{i18n "saas_licensing.seats"}}: {{org.seats_used}} / {{org.seats_total}}</div>
+      <div>{{i18n "saas_licensing.members"}}</div>
+      <ul>
+        {{#each org.organisation_members as |member|}}
+          <li>
+            {{member.username}}
+            <DButton
+              @action={{fn this.removeMember org member}}
+              @label={{i18n "saas_licensing.remove"}}
+              @class="btn-danger"
+            />
+          </li>
+        {{/each}}
+      </ul>
+      <div>
+        <Input
+          @placeholder={{i18n "saas_licensing.invite"}}
+          @value={{org._invite}}
+          @type="text"
+        />
+        <DButton @action={{fn this.inviteMember org org._invite}} @label={{i18n "saas_licensing.invite"}} />
+      </div>
+    </div>
+  {{/each}}
+</div>

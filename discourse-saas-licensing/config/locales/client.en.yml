@@ -1,0 +1,14 @@
+en:
+  js:
+    saas_licensing:
+      title: "Licensing"
+      packages: "License Packages"
+      organisations: "Organisations"
+      members: "Members"
+      seats: "Seats"
+      invite: "Invite"
+      remove: "Remove"
+      add_package: "Add Package"
+      save: "Save"
+      delete: "Delete"
+      enabled: "Licensing enabled"

@@ -1,0 +1,8 @@
+plugins:
+  stripe_secret_key:
+    default: ""
+  stripe_public_key:
+    default: ""
+  license_enabled:
+    default: true
+    client: true

@@ -1,0 +1,8 @@
+en:
+  site_settings:
+    stripe_secret_key: "Stripe secret key"
+    stripe_public_key: "Stripe public key"
+    license_enabled: "Enable SaaS licensing plugin"
+  discourse_saas:
+    admin_nav:
+      title: "Licenses"
